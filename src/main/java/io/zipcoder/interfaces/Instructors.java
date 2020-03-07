@@ -1,18 +1,9 @@
 package io.zipcoder.interfaces;
 
-public final class Instructors extends People {
-    private static final Instructors INSTANCE;
-    Instructor teacher0 = new Instructor(10l, "Kris");
-    Instructor teacher1 = new Instructor(9l, "Roberto");
-    Instructor teacher2 = new Instructor(8l, "Nobles");
-    Instructor teacher3 = new Instructor(7l, "Dolio");
+import java.util.Iterator;
 
-    private Instructors(){
-        addPerson(teacher0);
-        addPerson(teacher1);
-        addPerson(teacher2);
-        addPerson(teacher3);
-    }
+public final class Instructors extends People<Instructor> {
+    private static final Instructors INSTANCE;
 
     static{
         try{
@@ -21,6 +12,24 @@ public final class Instructors extends People {
             throw new RuntimeException("Exception occured in creating singleton instance");
         }
     }
+
+    private Instructors(){
+        addPerson(new Instructor(10l,"Kris"));
+        addPerson(new Instructor(9l,"Roberto"));
+        addPerson(new Instructor(8l,"Nobles"));
+        addPerson(new Instructor(7l,"Dolio"));
+    }
+
+    public Instructor[] getArray() {
+        Iterator<Instructor> iterator = iterator();
+        Instructor[] instructors = new Instructor[this.getPeople()];
+        for (int i = 0; i < this.getPeople(); i++) {
+            instructors[i] = iterator.next();
+        }
+        return instructors;
+    }
+
+
 
 
     public static Instructors getInstance(){

@@ -4,57 +4,57 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class People implements Iterable{
-    private List<Person> myPeople;
+public abstract class People<E extends Person> implements Iterable{
+
+    private List<E> myPeople;
 
     public People() {
-        this.myPeople = new ArrayList<Person>();
+        this.myPeople = new ArrayList<E>();
     }
 
-    public void addPerson(Person person){
+    public void addPerson(E person){
         myPeople.add(person);
     }
 
-    public Person findById(Long id){
-        Person result = new Person(0l,"");
-        for (Person p: myPeople) {
+    public E findById(Long id){
+        for (E p: myPeople) {
             if(p.getId() == id){
-                result = p;
-
+                return p;
             }
         }
-        return result;
+        return null;
     }
 
     public int getPeople(){
         return myPeople.size();
     }
 
-    public boolean contains(Person p){
+    public boolean contains(E p){
         return myPeople.contains(p);
     }
 
-    public void remove(Student student2) {
-        myPeople.remove(student2);
+    public void remove(E person) {
+        myPeople.remove(person);
     }
 
     public void removeById(long l) {
-        Person temp = new Person(0l,"");
-        for (Person p : myPeople) {
+        for (E p : myPeople) {
             if(p.getId() == l) {
-                temp = p;
+               E person = p;
+               myPeople.remove(person);
+               break;
             }
         }
-        myPeople.remove(temp);
     }
 
+    public abstract E[] getArray();
 
     public void removeAll() {
         myPeople.clear();
     }
 
     public Iterator iterator() {
-        Iterator<Person> iterator = myPeople.iterator();
+        Iterator<E> iterator = myPeople.iterator();
         return iterator;
     }
 }
