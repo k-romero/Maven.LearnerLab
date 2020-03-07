@@ -32,9 +32,15 @@ public class ZipCodeWilmington {
         teacher.lecture(learners,numOfHours);
     }
 
-    public Map<Student,Double> getStudyMap(){
-        Map<Student,Double> studyMap = new HashMap<Student, Double>();
-
+    public HashMap<Student,Double> getStudyMap(){
+        HashMap<Student,Double> studyMap = new HashMap<Student, Double>();
+        studyMap.put(students.student0,students.student0.getTotalStudyTIme());
+        studyMap.put(students.student1,students.student1.getTotalStudyTIme());
+        studyMap.put(students.student2,students.student2.getTotalStudyTIme());
+        studyMap.put(students.student3,students.student3.getTotalStudyTIme());
+        studyMap.put(students.student4,students.student4.getTotalStudyTIme());
+        studyMap.put(students.student5,students.student5.getTotalStudyTIme());
+        studyMap.put(students.student6,students.student6.getTotalStudyTIme());
         return studyMap;
     }
 }
