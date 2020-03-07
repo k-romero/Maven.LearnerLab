@@ -1,0 +1,28 @@
+package io.zipcoder.interfaces;
+
+public final class Students extends People {
+    private static final Students INSTANCE = new Students();
+    Student student0 = new Student(0l, "a");
+    Student student1 = new Student(1l, "b");
+    Student student2 = new Student(2l, "c");
+    Student student3 = new Student(3l, "d");
+    Student student4 = new Student(4l, "e");
+    Student student5 = new Student(5l, "f");
+    Student student6 = new Student(6l, "g");
+
+    private Students(){
+        addPerson(student0);
+        addPerson(student1);
+        addPerson(student2);
+        addPerson(student3);
+        addPerson(student4);
+        addPerson(student5);
+        addPerson(student6);
+    }
+
+    public static Students getInstance(){
+        return INSTANCE;
+    }
+
+
+}
